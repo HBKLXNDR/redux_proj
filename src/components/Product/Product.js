@@ -1,43 +1,35 @@
-import React, {useState} from 'react';
-import {Modal} from "../Modal/Modal";
-import css from "../../layouts/MainLayout/MainLayout.module.css"
-import css_module from "../Modal/modal.module.css"
+import React from 'react';
 
-const Product = ({product: {id, name, image, weight}}) => {
-    const [active, setActive] = useState();
-    const [openModel, setOpenModel] = useState("");
-    const openModal = () => {
-        return (<div className={css_module.modal}>
-            <div className={css_module.modal_content}>
-                sosi
-            </div>
-        </div>)
+import css from "./Product.module.css"
+import {productService} from "../../services";
+
+const Product = ({product: {id, name, imageUrl, weight}, setOpenModal, setDelProducts}) => {
+    // const [remove, setRemove] = useState();
+
+    const openPopup = () => {
+        setOpenModal(id)
     }
-    const deleteItem = () => {
-        console.log(id);
-    }
-    return (
-        <div>
+
+    // const deleteProduct = async ()=>{
+    //     await productService.deleteById(id)
+    //     setDelProducts(id)
+    // }
+
+
+    return (<div>
             <div className={css.item_card}>
-                <img src={image} alt={name}/>
+                <img src={imageUrl} alt={name}/>
                 <h1>{name}</h1>
                 <p>{id}</p>
                 <p>{weight}</p>
-                <button onClick={(() => {
-                    setOpenModel(id)
-                })}>add
-                </button>
-                <button onClick={deleteItem}>delete</button>
-
-
+                <button onClick={openPopup}>add</button>
+                <button onClick={()=>{}}>delete</button>
             </div>
-            {
-                openModel === id && openModal()
-            }
+
+
         </div>
 
-    )
-        ;
+    );
 };
 
 export {Product};
