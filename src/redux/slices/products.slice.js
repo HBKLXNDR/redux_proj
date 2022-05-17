@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {productService} from "../../services";
 
 let initialState = {
-    products: []
+    product: []
 }
 
 const getAll = createAsyncThunk(
@@ -20,8 +20,8 @@ const productSLice = createSlice({
     extraReducers:(builder)=>{
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                const {products} = action.payload
-                state.products = products
+                const {product} = action.payload
+                state.products = product
             })
     }
 

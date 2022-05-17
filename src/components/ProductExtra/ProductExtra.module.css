@@ -1,4 +1,4 @@
-.item_card{
+.item_card_card{
     box-sizing: border-box;
     border: black 1px solid;
     padding: 5px 10px;
@@ -8,7 +8,7 @@
     border-radius: 5px;
     background: blanchedalmond;
 }
-.item_card button:hover{
+.item_card_card button:hover{
     cursor: pointer;
     transform: scale(1.05);
     transition: 3ms;
