@@ -1,13 +1,15 @@
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 
 import './App.css';
 import {MainLayout} from "./layouts";
+import {ProductsPage} from "./pages";
 
 function App() {
   return (
       <Routes>
         <Route path={"/"} element={<MainLayout/>}>
-
+            <Route index element={<Navigate to={"products"}/>}/>
+            <Route path={"products"} element={<ProductsPage/>}/>
         </Route>
       </Routes>
   );

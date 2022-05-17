@@ -1,0 +1,15 @@
+.item_card{
+    box-sizing: border-box;
+    border: black 1px solid;
+    padding: 5px 10px;
+    display: grid;
+    text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    border-radius: 5px;
+    background: blanchedalmond;
+}
+.item_card button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 3ms;
+}
