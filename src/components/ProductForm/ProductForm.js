@@ -20,6 +20,9 @@ const ProductForm = () => {
             <div><label>name:<input type="text"{...register("name")}/></label></div>
             <div><label>count:<input type="text"{...register("count")}/></label></div>
             <div><label>weight:<input type="text"{...register("weight")}/></label></div>
+            <div><label>comments:<input type="text"{...register("comments")}/></label></div>
+            <div><label>weight:<input type="text"{...register("weight")}/></label></div>
+
             <button>Save</button>
         </form>
     );
