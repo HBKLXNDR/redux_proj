@@ -5,8 +5,8 @@ import css from "./Modal.module.css"
 
 const Modal = () => {
 
-    const cancel =()=>{
-        css.modal.display = "none"
+    const cancel = () => {
+
     }
 
     return (

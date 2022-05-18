@@ -1,36 +1,46 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {productService} from "../../services";
 
-let initialState = {
-    product: []
+const initialState = {
+    products: []
 }
 
 const getAll = createAsyncThunk(
     "productSlice/getAll",
-    async ()=>{
-        const {data} = await productService.getAllL()
+    async () => {
+        const {data} = await productService.getAllL();
         return data
     }
-)
+);
 
+const create = createAsyncThunk(
+    "create",
+    async ({product})=>{
+        const {data} = await productService.create(product);
+        return  data
+    }
+)
 
 const productSLice = createSlice({
     name: "productSlice",
     initialState,
-    extraReducers:(builder)=>{
-        builder
-            .addCase(getAll.fulfilled, (state, action) => {
-                const {product} = action.payload
-                state.products = product
-            })
+    reducers: {},
+    extraReducers:{
+        [getAll.fulfilled]:(state, action)=>{
+            state.products = action.payload
+        },
+        [create.fulfilled]:(state, action)=>{
+            state.products.push(action.payload)
+        }
     }
 
 });
 
-const {reducer: productReducer} = productSLice
+const {reducer: productReducer, actions} = productSLice
 
 const productsActions = {
     getAll,
+    create,
 
 }
 

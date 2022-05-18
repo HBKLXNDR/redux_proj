@@ -286,34 +286,18 @@
       ]
     },
     {
-      "id": 19,
-      "imageUrl": "some url here",
-      "name": "Product name",
-      "count": 4,
-      "size": {
-        "width": 200,
-        "height": 200
-      },
-      "weight": "200g",
-      "comments": [
-        "CommentModel",
-        "CommentModel"
-      ]
+      "imageUrl": "https://www.animalhumanesociety.org/sites/default/files/styles/crop_16_9_960x540/public/media/image/2017-07/IMG_2874_1.jpg",
+      "name": "Barsik",
+      "count": "1",
+      "weight": "500g",
+      "id": 19
     },
     {
-      "id": 20,
-      "imageUrl": "some url here",
-      "name": "Product name",
-      "count": 4,
-      "size": {
-        "width": 200,
-        "height": 200
-      },
-      "weight": "200g",
-      "comments": [
-        "CommentModel",
-        "CommentModel"
-      ]
+      "imageUrl": "https://www.aspca.org/sites/default/files/destructive-scratching.jpg",
+      "name": "Persik",
+      "count": "1",
+      "weight": "400g",
+      "id": 20
     }
   ],
   "comment": [
