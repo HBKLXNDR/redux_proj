@@ -1,0 +1,40 @@
+.input{
+    /*position: fixed;*/
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.common{
+
+
+    display: none;
+
+
+}
+
+.flex{
+    margin: 5px;
+}
+
+.flex label{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.common, .active{
+    position: fixed;
+    left: 40%;
+    top: 40%;
+    display: none;
+    grid-template-columns: max-content;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 12px;
+    padding: 20px 10px;
+    border: 1px black solid ;
+}
