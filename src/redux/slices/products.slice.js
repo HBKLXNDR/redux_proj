@@ -9,7 +9,7 @@ const initialState = {
 const getAll = createAsyncThunk(
     "productSlice/getAll",
     async () => {
-        const {data} = await productService.getAllL();
+        const {data} = await productService.getAll();
         return data
     }
 );
@@ -24,29 +24,34 @@ const create = createAsyncThunk(
 
 const deleteById = createAsyncThunk(
     "deleteById",
-    
+    async ({id}, {dispatch, rejectWithValue}) => {
+        await productService.deleteById(id);
+        dispatch(deleteProductById({id}))
+    }
 )
 
+const updateById = createAsyncThunk(
+    "updateById",
+    async ({id, product}, {dispatch, rejectWithValue}) => {
+        await productService.updateById(id, product);
+        dispatch(updateProductById({id, product}))
 
-
-// const updateById = createAsyncThunk(
-//     "updateById",
-//     async ({id, car}, {dispatch, rejectWithValue}) => {
-//         try {
-//             await carService.updateById(id, car);
-//             dispatch(updateCarById({id, car}))
-//         } catch (e) {
-//             return rejectWithValue({status: e.message})
-//         }
-//     }
-// );
+    }
+)
 
 
 const productSLice = createSlice({
     name: "productSlice",
     initialState,
     reducers: {
-
+        deleteProductById: (state, action) => {
+            const index = state.products.findIndex(product => product.id === action.payload.id)
+            state.products.splice(index, 1)
+        },
+        updateProductById: (state, action) => {
+            const index = state.products.findIndex(product => product.id === action.payload.id);
+            state.products[index] = {...state.products[index], ...action.payload.product};
+        }
     },
     extraReducers: {
         [getAll.fulfilled]: (state, action) => {
@@ -59,12 +64,13 @@ const productSLice = createSlice({
 
 });
 
-const {reducer: productReducer, actions} = productSLice
+const {reducer: productReducer, actions: {deleteProductById, updateProductById}} = productSLice
 
 const productsActions = {
     getAll,
     create,
-    // deleteById
+    deleteById,
+    updateById
 
 }
 
@@ -72,7 +78,3 @@ export {
     productReducer,
     productsActions
 }
-//
-// deleteProductById: (state, action) => {
-//     const index = state.products.findIndex(product => product.id === action.payload.id);
-//     state.products.splice(index, 1)

@@ -18,21 +18,22 @@ const ProductForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(submit)}>
-            <div className={css.common, css.active}>
-                <div className={css.input}>
-                    <div className={css.flex}><label>imageUrl:<input type="url"{...register("imageUrl")}/></label></div>
-                    <div className={css.flex}><label>name:<input type="text"{...register("name")}/></label></div>
-                    <div className={css.flex}><label>count:<input type="text"{...register("count")}/></label></div>
-                    <div className={css.flex}><label>weight:<input type="text"{...register("weight")}/></label></div>
-
+        <div className={css.modal}>
+            <form className={css.content} onSubmit={handleSubmit(submit)}>
+                <div><label>Name: <input type="text"{...register("name")}/></label></div>
+                <div><label>Image URL: <input type="text"{...register("imageUrl")}/></label></div>
+                <div><label>Quantity: <input type="text"{...register("count", {valueAsNumber: true})}/></label></div>
+                <div><label>Width: <input type="text"{...register("size.width", {valueAsNumber: true})}/></label></div>
+                <div><label>Height: <input type="text"{...register("size.height", {valueAsNumber: true})}/></label>
                 </div>
-                <div className={css.flex}><label>comments:<input type="text"{...register("comments")}/></label></div>
-
-                <button>Save</button>
-            </div>
-        </form>
+                <div className={css.confirm}>
+                    <button>Save</button>
+                    <button>cancel</button>
+                </div>
+            </form>
+        </div>
     );
 };
 
 export {ProductForm};
+

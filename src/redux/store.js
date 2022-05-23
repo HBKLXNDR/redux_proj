@@ -1,9 +1,9 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 
-import {productReducer} from "./slices";
+import {productReducer, commentReducer} from "./slices";
 
 const rootReducer = combineReducers({
-    products: productReducer
+    products: productReducer, comments: commentReducer
 });
 
 const store = configureStore({

@@ -3,11 +3,11 @@ import {urls} from "../constants";
 
 const commentService =
     {
-        getAll: () => axiosService.get(urls.comment),
-        getCommentByID: (id) => axiosService.get(`${urls.comment}/${id}`),
-        deleteCommentsByID: (id) => axiosService.delete(`${urls.comment}/${id}`),
-        create: (comment) => axiosService.post(urls.comment, comment),
-        updateCommentById: (id, comment) => axiosService.put(`${urls.comment}/${id}`, comment)
+        getAll: () => axiosService.get(urls.comments),
+        getCommentByID: (id) => axiosService.get(`${urls.comments}/${id}`),
+        deleteById: (id) => axiosService.delete(`${urls.comments}/${id}`),
+        create: (comment) => axiosService.post(urls.comments, comment),
+        updateById: (id, comment) => axiosService.put(`${urls.comments}/${id}`, comment)
     }
 
 export {

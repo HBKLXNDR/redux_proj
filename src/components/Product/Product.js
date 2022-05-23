@@ -1,35 +1,32 @@
 import React from 'react';
 
 import css from "./Product.module.css"
-import {productService} from "../../services";
+import {faEye, faTrashCan} from "@fortawesome/free-regular-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const Product = ({product: {id, name, imageUrl, weight}, setOpenModal, setDelProducts}) => {
-    // const [remove, setRemove] = useState();
-
-    const openPopup = () => {
-        setOpenModal(id)
-    }
-
-    // const deleteProduct = async ()=>{
-    //     await productService.deleteById(id)
-    //     setDelProducts(id)
-    // }
+const Product = ({product:{name, count, imageUrl, size}}) => {
+    const {width, height} = size;
 
 
-    return (<div>
+    return (
+        <div>
             <div className={css.item_card}>
                 <img src={imageUrl} alt={name}/>
-                <h1>{name}</h1>
-                <p>{id}</p>
-                <p>{weight}</p>
-                <button onClick={openPopup}>add</button>
-                <button onClick={()=>{}}>delete</button>
+                <div className={css.footerCard}>
+                    <div>
+                        <h3>{name}</h3>
+                        <p>Quantity: {count}</p>
+                        <p>{width}x{height}</p>
+                    </div>
+                    <div className={css.icons}>
+                        <FontAwesomeIcon icon={faEye}/>
+                        <FontAwesomeIcon icon={faTrashCan}/>
+                    </div>
+                </div>
             </div>
-
-
         </div>
-
     );
 };
 
 export {Product};
+
