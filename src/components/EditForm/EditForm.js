@@ -11,22 +11,19 @@ const EditForm = ({setOpenEditForm}) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-            const {name, imageUrl, count, size} = productForUpdate;
-            setValue("name",name )
-            setValue("imageUrl",imageUrl )
-            setValue("count",count )
-            setValue("size.width",size.width )
-            setValue("size.height",size.height )
+        const {name, imageUrl, count, size} = productForUpdate;
+        setValue("name", name)
+        setValue("imageUrl", imageUrl)
+        setValue("count", count)
+        setValue("size.width", size.width)
+        setValue("size.height", size.height)
     }, [productForUpdate])
-
-    console.log(productForUpdate);
 
 
     const update = async (newProduct) => {
         await dispatch(productsActions.updateById({id: productForUpdate.id, product: newProduct}))
         reset()
         setOpenEditForm(false)
-        console.log(productForUpdate);
     }
 
     return (
@@ -40,7 +37,7 @@ const EditForm = ({setOpenEditForm}) => {
                 </div>
                 <div className={css.confirm}>
                     <button>Edit</button>
-                    <button onClick={()=>setOpenEditForm(false)}>Cancel</button>
+                    <button onClick={() => setOpenEditForm(false)}>Cancel</button>
                 </div>
             </form>
         </div>
