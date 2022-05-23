@@ -4,6 +4,7 @@ import {productService} from "../../services";
 const initialState = {
     products: [],
     status: null,
+    productForUpdate: null
 }
 
 const getAll = createAsyncThunk(
@@ -14,11 +15,14 @@ const getAll = createAsyncThunk(
     }
 );
 
-const create = createAsyncThunk(
+const createProd = createAsyncThunk(
     "create",
-    async ({product}) => {
-        const {data} = await productService.create(product);
-        return data
+    async ({product}, {dispatch, rejectWithValue}) => {
+
+        const {data} = await productService.create(product)
+        dispatch(create({product: data}))
+
+
     }
 )
 
@@ -44,33 +48,40 @@ const productSLice = createSlice({
     name: "productSlice",
     initialState,
     reducers: {
-        deleteProductById: (state, action) => {
+        create: (state, action) => {
+            state.products.push(action.payload.product)
+        }
+        , deleteProductById: (state, action) => {
             const index = state.products.findIndex(product => product.id === action.payload.id)
             state.products.splice(index, 1)
         },
         updateProductById: (state, action) => {
             const index = state.products.findIndex(product => product.id === action.payload.id);
             state.products[index] = {...state.products[index], ...action.payload.product};
+        },
+        setProductForUpdate: (state, action) => {
+            state.productForUpdate = action.payload.product
         }
     },
     extraReducers: {
         [getAll.fulfilled]: (state, action) => {
             state.products = action.payload
         },
-        [create.fulfilled]: (state, action) => {
-            state.products.push(action.payload)
+        [createProd.fulfilled]: (state, action) => {
         }
     }
 
 });
 
-const {reducer: productReducer, actions: {deleteProductById, updateProductById}} = productSLice
+const {reducer: productReducer, actions: {create, deleteProductById, updateProductById, setProductForUpdate}} = productSLice
 
 const productsActions = {
     getAll,
-    create,
     deleteById,
-    updateById
+    updateById,
+    createProd,
+    setProductForUpdate
+
 
 }
 

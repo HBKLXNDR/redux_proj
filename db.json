@@ -1,19 +1,14 @@
 {
   "products": [
     {
-      "id": 0,
+      "name": "Barsik",
       "imageUrl": "https://www.animalhumanesociety.org/sites/default/files/styles/crop_16_9_960x540/public/media/image/2017-07/IMG_2874_1.jpg",
-      "name": "Product name",
-      "count": 4,
+      "count": 2,
       "size": {
-        "width": 200,
-        "height": 200
+        "width": 400,
+        "height": 600
       },
-      "weight": "200g",
-      "comments": [
-        "CommentModel",
-        "CommentModel"
-      ]
+      "id": 0
     },
     {
       "id": 1,
@@ -269,31 +264,6 @@
         "CommentModel",
         "CommentModel"
       ]
-    },
-    {
-      "id": 18,
-      "imageUrl": "https://www.animalhumanesociety.org/sites/default/files/styles/crop_16_9_960x540/public/media/image/2017-07/IMG_2874_1.jpg",
-      "name": "Product name",
-      "count": 4,
-      "size": {
-        "width": 200,
-        "height": 200
-      },
-      "weight": "200g",
-      "comments": [
-        "CommentModel",
-        "CommentModel"
-      ]
-    },
-    {
-      "name": "",
-      "imageUrl": "",
-      "count": null,
-      "size": {
-        "width": null,
-        "height": null
-      },
-      "id": 19
     }
   ],
   "comments": [

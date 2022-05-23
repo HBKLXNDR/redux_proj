@@ -6,6 +6,7 @@ const ProductsPage = () => {
         <div>
 
             <Products/>
+            {/*<ModalForDeleting/>*/}
 
         </div>
     );

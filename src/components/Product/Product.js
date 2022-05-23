@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import css from "./Product.module.css"
 import {faEye, faTrashCan} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {ModalForDeleting} from "../ModalForDeleting/ModalForDeleting";
+import {EditForm} from "../EditForm/EditForm";
+import {productsActions} from "../../redux";
+import {useDispatch} from "react-redux";
 
-const Product = ({product:{name, count, imageUrl, size}}) => {
+const Product = ({product, product: {name, count, imageUrl, size}}) => {
     const {width, height} = size;
+    const dispatch = useDispatch();
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
+    const [openEditForm, setOpenEditForm] = useState(false);
 
 
     return (
@@ -19,11 +26,17 @@ const Product = ({product:{name, count, imageUrl, size}}) => {
                         <p>{width}x{height}</p>
                     </div>
                     <div className={css.icons}>
-                        <FontAwesomeIcon icon={faEye}/>
-                        <FontAwesomeIcon icon={faTrashCan}/>
+                        <FontAwesomeIcon onClick={()=> {
+                            setOpenEditForm(true);
+                            dispatch(productsActions.setProductForUpdate({product}))
+                        }} icon={faEye}/>
+                        <FontAwesomeIcon onClick={() => setOpenDeleteModal(true)} icon={faTrashCan}/>
                     </div>
                 </div>
             </div>
+            {openDeleteModal && <ModalForDeleting setOpenDeleteModal={setOpenDeleteModal} product={product}/>}
+            {openEditForm && <EditForm  setOpenEditForm={setOpenEditForm}/>}
+
         </div>
     );
 };

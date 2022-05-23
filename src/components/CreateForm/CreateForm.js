@@ -2,11 +2,11 @@ import React from 'react';
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 
-import css from "./ProductForm.module.css"
+import css from "./CreateForm.module.css"
 import {productsActions} from "../../redux";
 
 
-const ProductForm = () => {
+const CreateForm = () => {
 
     const {reset, register, handleSubmit} = useForm();
 
@@ -28,12 +28,12 @@ const ProductForm = () => {
                 </div>
                 <div className={css.confirm}>
                     <button>Save</button>
-                    <button>cancel</button>
+                    <button>Cancel</button>
                 </div>
             </form>
         </div>
     );
 };
 
-export {ProductForm};
+export {CreateForm};
 
