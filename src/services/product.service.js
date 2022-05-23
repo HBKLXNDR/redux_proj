@@ -6,7 +6,7 @@ const productService = {
     deleteById: (id) => axiosService.delete(`${urls.product}/${id}`),
     getProductById: (id) => axiosService.get(`${urls.product}/${id}`),
     create: (product) => axiosService.post(urls.product, product),
-    updateProductById: (id, product) => axiosService.put(`${ursl.product}/${id}`, product)
+    updateProductById: (id, product) => axiosService.put(`${urls.product}/${id}`, product)
 }
 
 export {

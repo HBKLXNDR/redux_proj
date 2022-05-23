@@ -4,8 +4,6 @@ import {productService} from "../../services";
 const initialState = {
     products: [],
     status: null,
-    formErrors: {},
-    productForUpdate
 }
 
 const getAll = createAsyncThunk(
@@ -26,15 +24,11 @@ const create = createAsyncThunk(
 
 const deleteById = createAsyncThunk(
     "deleteById",
-    async ({id}, {dispatch, rejectWithValue}) => {
-        try {
-            await productService.deleteById(id);
-            dispatch(deleteProductById({id}))
-        } catch (e) {
-            return rejectWithValue({status: e.message})
-        }
-    }
-);
+    
+)
+
+
+
 // const updateById = createAsyncThunk(
 //     "updateById",
 //     async ({id, car}, {dispatch, rejectWithValue}) => {
@@ -52,27 +46,25 @@ const productSLice = createSlice({
     name: "productSlice",
     initialState,
     reducers: {
-        deleteProductById: (state, action) => {
-            const index = state.products.findIndex(product => product.id === action.payload.id);
-            state.products.splice(index, 1)
+
+    },
+    extraReducers: {
+        [getAll.fulfilled]: (state, action) => {
+            state.products = action.payload
         },
-        extraReducers: {
-            [getAll.fulfilled]: (state, action) => {
-                state.products = action.payload
-            },
-            [create.fulfilled]: (state, action) => {
-                state.products.push(action.payload)
-            }
+        [create.fulfilled]: (state, action) => {
+            state.products.push(action.payload)
         }
+    }
 
-    });
+});
 
-const {reducer: productReducer, actions: {deleteProductById}} = productSLice
+const {reducer: productReducer, actions} = productSLice
 
 const productsActions = {
     getAll,
     create,
-    deleteById
+    // deleteById
 
 }
 
@@ -80,3 +72,7 @@ export {
     productReducer,
     productsActions
 }
+//
+// deleteProductById: (state, action) => {
+//     const index = state.products.findIndex(product => product.id === action.payload.id);
+//     state.products.splice(index, 1)
