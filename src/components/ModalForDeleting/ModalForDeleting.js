@@ -6,6 +6,7 @@ import {productsActions} from "../../redux";
 
 
 const ModalForDeleting = ({setOpenDeleteModal, product: {id, name}}) => {
+
     const dispatch = useDispatch();
 
 

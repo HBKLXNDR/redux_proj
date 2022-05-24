@@ -1,16 +1,6 @@
 {
   "products": [
     {
-      "name": "Product names",
-      "imageUrl": "https://www.animalhumanesociety.org/sites/default/files/styles/crop_16_9_960x540/public/media/image/2017-07/IMG_2874_1.jpg",
-      "count": 4,
-      "size": {
-        "width": 200,
-        "height": 200
-      },
-      "id": 1
-    },
-    {
       "id": 2,
       "imageUrl": "https://www.animalhumanesociety.org/sites/default/files/styles/crop_16_9_960x540/public/media/image/2017-07/IMG_2874_1.jpg",
       "name": "Product name",

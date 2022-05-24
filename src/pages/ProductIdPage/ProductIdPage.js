@@ -1,10 +1,29 @@
-import React from 'react';
-import {Comments} from "../../components";
+import React, {useEffect, useState} from 'react';
+import {useLocation, useParams} from "react-router-dom";
+
+
+import {ProductDetails} from "../../components";
+import {productService} from "../../services";
+
 
 const ProductIdPage = () => {
+    const [product, setProduct] = useState(null);
+    const {state} = useLocation();
+    const {productId} = useParams()
+
+    useEffect(() => {
+        if (state) {
+            setProduct(product)
+        } else {
+            productService.getById(productId).then(({data})=>setProduct(data))
+        }
+    }, [])
+
     return (
         <div>
-            <Comments/>
+            {
+              product &&  <ProductDetails product={product} />
+            }
         </div>
     );
 };

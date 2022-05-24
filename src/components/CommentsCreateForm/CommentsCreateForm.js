@@ -8,7 +8,7 @@ const CommentsCreateForm = ({setOpenCommentsCreateForm}) => {
     const dispatch = useDispatch();
 
     const submit = async (newComment) => {
-        await dispatch(commentActions.createProd({comment: newComment}))
+        await dispatch(commentActions.createComment({comment: newComment}))
         reset()
         setOpenCommentsCreateForm(false)
     }

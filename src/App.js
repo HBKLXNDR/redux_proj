@@ -7,10 +7,10 @@ import {ProductsPage, ProductIdPage, NotFoundPage} from "./pages";
 function App() {
     return (
         <Routes>
-            <Route path={"/"} element={<MainLayout/>}>
-                <Route index element={<Navigate to={"products"}/>}/>
-                <Route path={"productsos"} element={<ProductIdPage/>}/>
-                <Route path={"products"} element={<ProductsPage/>}/>
+            <Route path="/" element={<MainLayout/>}>
+                <Route index element={<Navigate to="products"/>}/>
+                <Route path="products/:productId" element={<ProductIdPage/>}/>
+                <Route path="products" element={<ProductsPage/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
 
             </Route>
