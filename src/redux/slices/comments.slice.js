@@ -1,9 +1,11 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {commentService} from "../../services";
 
 const initialState = {
     comments: [],
-    status: null
+    status: null,
+    commentForUpdate: null
 }
 
 
@@ -15,11 +17,11 @@ const getAll = createAsyncThunk(
     }
 );
 
-const create = createAsyncThunk(
+const createComment = createAsyncThunk(
     "create",
-    async ({comment}) => {
-        const {data} = await commentService.create(comment);
-        return data
+    async ({comment, dispatch}) => {
+        const {data} = await commentService.create(comment)
+        dispatch(create({product: data}))
     }
 )
 
@@ -56,24 +58,31 @@ const commentSlice = createSlice({
             const index = state.comments.findIndex(comment => comment.id === action.payload.id);
             state.comments[index] = {...state.comments[index], ...action.payload.comment};
         },
+        setCommentForUpdate: (state, action) => {
+            state.commentForUpdate = action.payload.product
+
+        }
 
     },
     extraReducers: {
         [getAll.fulfilled]: (state, action) => {
             state.comments = action.payload
+        },
+        [createComment.fulfilled]: (state, action)=>{
         }
     }
 });
 
 
-const {reducer: commentReducer, actions: {deleteCommentById, updateCommentById}} = commentSlice;
+const {reducer: commentReducer, actions: {create,deleteCommentById, updateCommentById,setCommentForUpdate}} = commentSlice;
 
 
 const commentActions = {
     getAll,
     deleteById,
     updateById,
-    create
+    createComment,
+    setCommentForUpdate
 }
 
 export {

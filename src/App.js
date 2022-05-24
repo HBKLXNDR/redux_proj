@@ -1,9 +1,8 @@
 import {Routes, Route, Navigate} from "react-router-dom";
 
-import './App.css';
+import css from "./App.module.css"
 import {MainLayout} from "./layouts";
 import {ProductsPage} from "./pages";
-import {Comments} from "./components/Comments/Comments";
 
 function App() {
     return (
@@ -11,7 +10,7 @@ function App() {
             <Route path={"/"} element={<MainLayout/>}>
                 <Route index element={<Navigate to={"products"}/>}/>
                 <Route path={"products"} element={<ProductsPage/>}/>
-                <Route path ={"comments"} element={<Comments/>}/>
+
             </Route>
         </Routes>
     );

@@ -1,16 +1,6 @@
 {
   "products": [
     {
-      "name": "Barsik",
-      "imageUrl": "https://www.animalhumanesociety.org/sites/default/files/styles/crop_16_9_960x540/public/media/image/2017-07/IMG_2874_1.jpg",
-      "count": 2,
-      "size": {
-        "width": 400,
-        "height": 600
-      },
-      "id": 0
-    },
-    {
       "id": 1,
       "imageUrl": "https://www.animalhumanesociety.org/sites/default/files/styles/crop_16_9_960x540/public/media/image/2017-07/IMG_2874_1.jpg",
       "name": "Product name",

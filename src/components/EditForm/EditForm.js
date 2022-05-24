@@ -10,6 +10,9 @@ const EditForm = ({setOpenEditForm}) => {
     const {productForUpdate} = useSelector(state => state.products);
     const dispatch = useDispatch();
 
+
+
+
     useEffect(() => {
         const {name, imageUrl, count, size} = productForUpdate;
         setValue("name", name)
@@ -18,6 +21,7 @@ const EditForm = ({setOpenEditForm}) => {
         setValue("size.width", size.width)
         setValue("size.height", size.height)
     }, [productForUpdate])
+    
 
 
     const update = async (newProduct) => {
@@ -28,6 +32,7 @@ const EditForm = ({setOpenEditForm}) => {
 
     return (
         <div className={css.modal}>
+
             <form className={css.content} onSubmit={handleSubmit(update)}>
                 <div><label>Name: <input type="text"{...register("name")}/></label></div>
                 <div><label>Image URL: <input type="text"{...register("imageUrl")}/></label></div>

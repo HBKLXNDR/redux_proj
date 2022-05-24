@@ -6,15 +6,16 @@ import css from "./CreateForm.module.css"
 import {productsActions} from "../../redux";
 
 
-const CreateForm = () => {
+const CreateForm = ({setOpenCreateForm}) => {
 
     const {reset, register, handleSubmit} = useForm();
 
     const dispatch = useDispatch();
 
     const submit = async (newProduct) => {
-        await dispatch(productsActions.create({product: newProduct}))
+        await dispatch(productsActions.createProd({product: newProduct}))
         reset()
+        setOpenCreateForm(false)
     }
 
     return (
@@ -28,7 +29,7 @@ const CreateForm = () => {
                 </div>
                 <div className={css.confirm}>
                     <button>Save</button>
-                    <button>Cancel</button>
+                    <button onClick={()=>setOpenCreateForm(false)}>Cancel</button>
                 </div>
             </form>
         </div>

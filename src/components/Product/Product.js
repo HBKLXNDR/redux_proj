@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-
-import css from "./Product.module.css"
 import {faEye, faTrashCan} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useDispatch} from "react-redux";
+
+
+import css from "./Product.module.css"
 import {ModalForDeleting} from "../ModalForDeleting/ModalForDeleting";
 import {EditForm} from "../EditForm/EditForm";
 import {productsActions} from "../../redux";
-import {useDispatch} from "react-redux";
 
 const Product = ({product, product: {name, count, imageUrl, size}}) => {
     const {width, height} = size;
@@ -26,7 +27,7 @@ const Product = ({product, product: {name, count, imageUrl, size}}) => {
                         <p>{width}x{height}</p>
                     </div>
                     <div className={css.icons}>
-                        <FontAwesomeIcon onClick={()=> {
+                        <FontAwesomeIcon onClick={() => {
                             setOpenEditForm(true);
                             dispatch(productsActions.setProductForUpdate({product}))
                         }} icon={faEye}/>
@@ -35,7 +36,7 @@ const Product = ({product, product: {name, count, imageUrl, size}}) => {
                 </div>
             </div>
             {openDeleteModal && <ModalForDeleting setOpenDeleteModal={setOpenDeleteModal} product={product}/>}
-            {openEditForm && <EditForm  setOpenEditForm={setOpenEditForm}/>}
+            {openEditForm && <EditForm setOpenEditForm={setOpenEditForm}/>}
 
         </div>
     );
