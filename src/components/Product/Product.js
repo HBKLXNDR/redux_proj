@@ -8,6 +8,7 @@ import css from "./Product.module.css"
 import {ModalForDeleting} from "../ModalForDeleting/ModalForDeleting";
 import {EditForm} from "../EditForm/EditForm";
 import {productsActions} from "../../redux";
+import {Comments} from "../Comments/Comments";
 
 const Product = ({product, product: {name, count, imageUrl, size}}) => {
     const {width, height} = size;
@@ -33,6 +34,7 @@ const Product = ({product, product: {name, count, imageUrl, size}}) => {
                         }} icon={faEye}/>
                         <FontAwesomeIcon onClick={() => setOpenDeleteModal(true)} icon={faTrashCan}/>
                     </div>
+                    <Comments product={product}/>
                 </div>
             </div>
             {openDeleteModal && <ModalForDeleting setOpenDeleteModal={setOpenDeleteModal} product={product}/>}

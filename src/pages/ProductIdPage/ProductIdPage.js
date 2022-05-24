@@ -1,9 +1,10 @@
 import React from 'react';
+import {Comments} from "../../components";
 
 const ProductIdPage = () => {
     return (
         <div>
-            ProductIdPage
+            <Comments/>
         </div>
     );
 };

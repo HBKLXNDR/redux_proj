@@ -4,6 +4,6 @@ export * from "./ModalForDeleting/ModalForDeleting";
 export * from "./Header/Header";
 export * from "./Product/Product";
 export * from "./CreateForm/CreateForm";
-export * from "./CommentsForm/CommentsForm";
+export * from "./CommentsCreateForm/CommentsCreateForm";
 export * from "./Comments/Comments";
 export * from "./Comment/Comment";

@@ -2,14 +2,16 @@ import {Routes, Route, Navigate} from "react-router-dom";
 
 import css from "./App.module.css"
 import {MainLayout} from "./layouts";
-import {ProductsPage} from "./pages";
+import {ProductsPage, ProductIdPage, NotFoundPage} from "./pages";
 
 function App() {
     return (
         <Routes>
             <Route path={"/"} element={<MainLayout/>}>
                 <Route index element={<Navigate to={"products"}/>}/>
+                <Route path={"productsos"} element={<ProductIdPage/>}/>
                 <Route path={"products"} element={<ProductsPage/>}/>
+                <Route path="*" element={<NotFoundPage/>}/>
 
             </Route>
         </Routes>

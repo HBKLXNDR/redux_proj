@@ -1,0 +1,17 @@
+.margin {
+    padding: 20px 0;
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    /*flex-direction: column;*/
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: start;
+}
+
+.buttons button{
+    margin-top: 5px;
+
+}

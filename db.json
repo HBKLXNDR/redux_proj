@@ -1,19 +1,14 @@
 {
   "products": [
     {
-      "id": 1,
+      "name": "Product names",
       "imageUrl": "https://www.animalhumanesociety.org/sites/default/files/styles/crop_16_9_960x540/public/media/image/2017-07/IMG_2874_1.jpg",
-      "name": "Product name",
       "count": 4,
       "size": {
         "width": 200,
         "height": 200
       },
-      "weight": "200g",
-      "comments": [
-        "CommentModel",
-        "CommentModel"
-      ]
+      "id": 1
     },
     {
       "id": 2,
@@ -258,10 +253,16 @@
   ],
   "comments": [
     {
-      "id": 3,
+      "id": 2,
       "productId": 1,
       "description": "some text here",
-      "date": "14:00 22.08.2021"
+      "date": "22.08.2021"
+    },
+    {
+      "id": 3,
+      "productId": 5,
+      "description": "some text here",
+      "date": "22.08.2021"
     }
   ]
 }
