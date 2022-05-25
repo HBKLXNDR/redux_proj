@@ -4,11 +4,13 @@ import {useDispatch} from "react-redux";
 
 import css from "./CreateForm.module.css"
 import {productsActions} from "../../redux";
+import {joiResolver} from "@hookform/resolvers/joi"
+import {productValidator} from "../../validators";
 
 
 const CreateForm = ({setOpenCreateForm}) => {
 
-    const {reset, register, handleSubmit} = useForm();
+    const {reset, register, handleSubmit} = useForm({resolver:joiResolver(productValidator)});
 
     const dispatch = useDispatch();
 
