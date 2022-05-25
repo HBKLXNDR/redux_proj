@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -8,11 +8,8 @@
 
 
 }
-/*body::-webkit-scrollbar {*/
-/*    display: none;*/
-/*}*/
 
-body{
+body {
     overflow-x: hidden;
     width: 100%;
 }

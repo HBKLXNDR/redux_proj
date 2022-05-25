@@ -14,7 +14,6 @@ const CommentsCreateForm = ({setOpenCommentsCreateForm}) => {
     }
 
 
-
     return (
         <div onClick={handleSubmit(submit)}>
             <p>Leave your comment and input date!</p>

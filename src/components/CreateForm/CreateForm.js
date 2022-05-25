@@ -27,9 +27,11 @@ const CreateForm = ({setOpenCreateForm}) => {
                 <div><label>Width: <input type="text"{...register("size.width", {valueAsNumber: true})}/></label></div>
                 <div><label>Height: <input type="text"{...register("size.height", {valueAsNumber: true})}/></label>
                 </div>
+                <div><label>Weight: <input type="text"{...register("weight")}/></label>
+                </div>
                 <div className={css.confirm}>
                     <button>Save</button>
-                    <button onClick={()=>setOpenCreateForm(false)}>Cancel</button>
+                    <button onClick={() => setOpenCreateForm(false)}>Cancel</button>
                 </div>
             </form>
         </div>

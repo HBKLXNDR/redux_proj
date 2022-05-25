@@ -15,7 +15,7 @@ const Comments = () => {
 
     return (
         <div className={css.comments}>
-            {comments.map(comment=><Comment key={comment.id} comment={comment}/>)}
+            {comments.map(comment => <Comment key={comment.id} comment={comment}/>)}
         </div>
     );
 };

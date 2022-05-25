@@ -216,22 +216,37 @@
         "CommentModel",
         "CommentModel"
       ]
+    },
+    {
+      "name": "Image",
+      "imageUrl": "https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/in/wp-content/uploads/2022/03/monkey-g412399084_1280.jpg",
+      "count": 1,
+      "size": {
+        "width": 300,
+        "height": 800
+      },
+      "weight": "500g",
+      "id": 18
     }
   ],
-  "comments": [{
-    "id": 3,
-    "productId": 1,
-    "description": "some text here",
-    "date": "14:00 22.08.2021"
-  },{
-    "id": 5,
-    "productId": 1,
-    "description": "some text here",
-    "date": "14:00 22.08.2021"
-  },{
-    "id": 2,
-    "productId": 1,
-    "description": "some text here",
-    "date": "14:00 22.08.2021"
-  }]
+  "comments": [
+    {
+      "id": 3,
+      "productId": 1,
+      "description": "some text here",
+      "date": "14:00 22.08.2021"
+    },
+    {
+      "id": 5,
+      "productId": 1,
+      "description": "some text here",
+      "date": "14:00 22.08.2021"
+    },
+    {
+      "id": 2,
+      "productId": 1,
+      "description": "some text here",
+      "date": "14:00 22.08.2021"
+    }
+  ]
 }

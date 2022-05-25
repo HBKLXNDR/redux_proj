@@ -15,14 +15,14 @@ const ProductIdPage = () => {
         if (state) {
             setProduct(state)
         } else {
-            productService.getById(productId).then(({data})=>setProduct(data))
+            productService.getById(productId).then(({data}) => setProduct(data))
         }
     }, [])
 
     return (
         <div>
             {
-              product &&  <ProductDetails product={product} />
+                product && <ProductDetails product={product}/>
             }
         </div>
     );

@@ -7,7 +7,6 @@ import {Header} from "../../components";
 const MainLayout = () => {
 
 
-
     return (
         <div>
             <Header/>
@@ -20,11 +19,4 @@ const MainLayout = () => {
 
 export {MainLayout};
 
-// <div className={css.main_wrap}>
-//
-//     {
-//         products.map((product) => <Product key={product.id} product={product} setOpenModal={setOpenModal}/>)
-//     }
-//     {openModal && <ModalForDeleting/>}
-//
-// </div>
+

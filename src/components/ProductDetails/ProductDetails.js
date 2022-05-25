@@ -8,16 +8,12 @@ import {productsActions} from "../../redux";
 import css from "./ProductDetails.module.css"
 import {ModalForDeleting} from "../ModalForDeleting/ModalForDeleting";
 import {EditForm} from "../EditForm/EditForm";
-import {CommentsCreateForm} from "../CommentsCreateForm/CommentsCreateForm";
-// import {Comments} from "../Comments/Comments";
 
 const ProductDetails = ({product, product: {id, name, imageUrl, count, size, weight}}) => {
     const dispatch = useDispatch();
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const [openEditForm, setOpenEditForm] = useState(false);
-    const [openCommentsCreateForm, setOpenCommentsCreateForm] = useState(false);
     const {width, height} = size;
-
 
 
     return (
@@ -38,10 +34,7 @@ const ProductDetails = ({product, product: {id, name, imageUrl, count, size, wei
                     }} icon={faEye}/>
                     <FontAwesomeIcon onClick={() => setOpenDeleteModal(true)} icon={faTrashCan}/>
                 </div>
-                {/*<Comments/>*/}
             </div>
-            {/*<button onClick={()=>setOpenCommentsCreateForm(true)}>Create new comment</button>*/}
-            {openCommentsCreateForm && <CommentsCreateForm setOpenCommentsCreateForm={setOpenCommentsCreateForm}/>}
             {openDeleteModal && <ModalForDeleting setOpenDeleteModal={setOpenDeleteModal} product={product}/>}
             {openEditForm && <EditForm setOpenEditForm={setOpenEditForm}/>}
 
