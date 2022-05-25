@@ -14,10 +14,11 @@ const EditForm = ({setOpenEditForm}) => {
 
 
     useEffect(() => {
-        const {name, imageUrl, count, size} = productForUpdate;
+        const {name, imageUrl, count, size,weight} = productForUpdate;
         setValue("name", name)
         setValue("imageUrl", imageUrl)
         setValue("count", count)
+        setValue("weight", weight)
         setValue("size.width", size.width)
         setValue("size.height", size.height)
     }, [productForUpdate])
@@ -38,7 +39,8 @@ const EditForm = ({setOpenEditForm}) => {
                 <div><label>Image URL: <input type="text"{...register("imageUrl")}/></label></div>
                 <div><label>Quantity: <input type="text"{...register("count", {valueAsNumber: true})}/></label></div>
                 <div><label>Width: <input type="text"{...register("size.width", {valueAsNumber: true})}/></label></div>
-                <div><label>Height: <input type="text"{...register("size.height", {valueAsNumber: true})}/></label>
+                <div><label>Height: <input type="text"{...register("size.height", {valueAsNumber: true})}/></label></div>
+                <div><label>Weight: <input type="text"{...register("weight")}/></label>
                 </div>
                 <div className={css.confirm}>
                     <button>Edit</button>

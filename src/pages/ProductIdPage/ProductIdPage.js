@@ -13,7 +13,7 @@ const ProductIdPage = () => {
 
     useEffect(() => {
         if (state) {
-            setProduct(product)
+            setProduct(state)
         } else {
             productService.getById(productId).then(({data})=>setProduct(data))
         }

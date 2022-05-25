@@ -3,15 +3,18 @@ import React from 'react';
 import css from "./ModalForDeleting.module.css"
 import {useDispatch} from "react-redux";
 import {productsActions} from "../../redux";
+import {useNavigate} from "react-router-dom";
 
 
 const ModalForDeleting = ({setOpenDeleteModal, product: {id, name}}) => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 
     const deleteById = async () => {
         await dispatch(productsActions.deleteById({id}))
+        navigate("/")
     }
 
     return (

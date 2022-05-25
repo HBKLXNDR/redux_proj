@@ -3,15 +3,27 @@
     /*display: flex;*/
     /*justify-content: space-between;*/
     /*flex-direction: column;*/
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .buttons {
     display: grid;
     grid-template-columns: max-content max-content;
     justify-content: start;
+    gap: 20px;
 }
 
 .buttons button{
     margin-top: 5px;
 
+}
+.center{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: black solid 2px;
 }

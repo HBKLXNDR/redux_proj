@@ -1,0 +1,7 @@
+.comments {
+    box-sizing: border-box;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: max-content max-content max-content;
+    margin-top: 10px;
+}

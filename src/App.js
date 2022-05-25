@@ -8,11 +8,9 @@ function App() {
     return (
         <Routes>
             <Route path="/" element={<MainLayout/>}>
-                <Route index element={<Navigate to="products"/>}/>
-                <Route path="products/:productId" element={<ProductIdPage/>}/>
-                <Route path="products" element={<ProductsPage/>}/>
+                <Route index element={<ProductsPage/>}/>
+                <Route path="/products/:productId" element={<ProductIdPage/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
-
             </Route>
         </Routes>
     );

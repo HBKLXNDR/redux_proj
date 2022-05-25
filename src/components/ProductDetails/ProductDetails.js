@@ -9,6 +9,7 @@ import css from "./ProductDetails.module.css"
 import {ModalForDeleting} from "../ModalForDeleting/ModalForDeleting";
 import {EditForm} from "../EditForm/EditForm";
 import {CommentsCreateForm} from "../CommentsCreateForm/CommentsCreateForm";
+// import {Comments} from "../Comments/Comments";
 
 const ProductDetails = ({product, product: {id, name, imageUrl, count, size, weight}}) => {
     const dispatch = useDispatch();
@@ -20,25 +21,26 @@ const ProductDetails = ({product, product: {id, name, imageUrl, count, size, wei
 
 
     return (
-        <div>
-            <div className={css.background}>
+        <div className={css.main}>
+            <div className={css.item_card}>
                 <img src={imageUrl} alt={name}/>
-                <div>
+                <div className={css.text}>
                     <h2>{name}</h2>
                     <p>Quantity:{count}</p>
                     <p>Weight:{weight}</p>
                     <h4>Sizes</h4>
                     <p>Width: {width} x Height:{height}</p>
                 </div>
-                <div>
+                <div className={css.icons}>
                     <FontAwesomeIcon onClick={() => {
                         setOpenEditForm(true);
                         dispatch(productsActions.setProductForUpdate({product}))
                     }} icon={faEye}/>
                     <FontAwesomeIcon onClick={() => setOpenDeleteModal(true)} icon={faTrashCan}/>
                 </div>
+                {/*<Comments/>*/}
             </div>
-            <button onClick={()=>setOpenCommentsCreateForm(true)}>Create new comment</button>
+            {/*<button onClick={()=>setOpenCommentsCreateForm(true)}>Create new comment</button>*/}
             {openCommentsCreateForm && <CommentsCreateForm setOpenCommentsCreateForm={setOpenCommentsCreateForm}/>}
             {openDeleteModal && <ModalForDeleting setOpenDeleteModal={setOpenDeleteModal} product={product}/>}
             {openEditForm && <EditForm setOpenEditForm={setOpenEditForm}/>}
