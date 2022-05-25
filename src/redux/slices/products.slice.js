@@ -43,6 +43,31 @@ const updateById = createAsyncThunk(
     }
 )
 
+const getAllSortedByQuantity = createAsyncThunk(
+    "sortByQuan",
+    async ({product}, {dispatch}) => {
+        await productService.getAll();
+        dispatch(getAllSortedByCount({product}))
+
+    }
+)
+
+const getAllSortedByName = createAsyncThunk(
+    "sortByName",
+    async ({product}, {dispatch}) => {
+        await productService.getAll()
+        dispatch(getAllSortedByAlphabet(product))
+    }
+)
+
+const getById = createAsyncThunk(
+    "getById",
+    async ({id}, {dispatch}) => {
+        await productService.getById(id)
+        dispatch(getOneProductById(id))
+    }
+)
+
 
 const productSLice = createSlice({
     name: "productSlice",
@@ -61,7 +86,18 @@ const productSLice = createSlice({
         },
         setProductForUpdate: (state, action) => {
             state.productForUpdate = action.payload.product
+        },
+        getAllSortedByCount: (state, action) => {
+            state.product = action.payload.sort((a, b) => a.count - b.count)
+        },
+        getAllSortedByAlphabet: (state, action) => {
+            state.product = action.payload.sort((a, b) => a.name.localeCompare(b.name))
+        },
+        getOneProductById: (state, action) => {
+            const id = state.products.findIndex((product => product.id === action.payload.id))
+
         }
+
     },
     extraReducers: {
         [getAll.fulfilled]: (state, action) => {
@@ -73,13 +109,27 @@ const productSLice = createSlice({
 
 });
 
-const {reducer: productReducer, actions: {create, deleteProductById, updateProductById, setProductForUpdate}} = productSLice
+const {
+    reducer: productReducer,
+    actions: {
+        create,
+        deleteProductById,
+        updateProductById,
+        setProductForUpdate,
+        getAllSortedByAlphabet,
+        getOneProductById,
+        getAllSortedByCount
+    }
+} = productSLice
 
 const productsActions = {
     getAll,
     deleteById,
+    getById,
     updateById,
     createProd,
+    getAllSortedByQuantity,
+    getAllSortedByName,
     setProductForUpdate
 
 

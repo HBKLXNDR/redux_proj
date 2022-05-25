@@ -10,6 +10,13 @@ const Products = () => {
     const dispatch = useDispatch();
 
 
+    const sorter = () => {
+        dispatch(productsActions.getAllSortedByName())
+    }
+    const sorter2 = () => {
+        dispatch(productsActions.getAllSortedByQuantity())
+    }
+
     useEffect(() => {
         dispatch(productsActions.getAll())
     }, [])
@@ -20,6 +27,15 @@ const Products = () => {
             <div className={css.main_wrap}>
                 {products.map(product => <Product key={product.id} product={product}/>)}
 
+            </div>
+            <div className={css.navbar}>
+                <div className={css.dropdown}>
+                    <button className={css.dropbtn}>Sorting</button>
+                    <div className={css.dropdown_content}>
+                        <a href="#" onClick={() => sorter()}>Alphabet</a>
+                        <a href="#" onClick={() => sorter2()}>Quantity</a>
+                    </div>
+                </div>
             </div>
         </div>
     );
