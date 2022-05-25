@@ -11,6 +11,10 @@ const ProductsPage = () => {
         const res = [...products].sort((a, b) => a.name.localeCompare(b.name));
         setProducts(res)
     }
+    const sorter2 = () => {
+        const res = [...products].sort((a, b) => a - b)
+        setProducts(res)
+    }
 
     return (
         <div>
@@ -22,12 +26,11 @@ const ProductsPage = () => {
                 <div className={css.dropdown}>
                     <button className={css.dropbtn}>Sorting</button>
                     <div className={css.dropdown_content}>
-                        <a href="#" onClick={sorter}>Alphabet</a>
-                        <a href="#">Quantity</a>
+                        <a href="#" onClick={()=>sorter()}>Alphabet</a>
+                        <a href="#" onClick={()=>sorter2()}>Quantity</a>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };
