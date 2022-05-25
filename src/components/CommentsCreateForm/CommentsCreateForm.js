@@ -17,8 +17,8 @@ const CommentsCreateForm = ({setOpenCommentsCreateForm}) => {
     return (
         <div onClick={handleSubmit(submit)}>
             <p>Leave your comment and input date!</p>
-            <div><label><input type="text" {...register("description")}/></label></div>
-            <div><label><input type="text" {...register("date")}/></label></div>
+            <div><label><input type="text" {...register("description", {required: true})}/></label></div>
+            <div><label><input type="text" {...register("date", {required: true})}/></label></div>
         </div>
     );
 };

@@ -32,13 +32,20 @@ const EditForm = ({setOpenEditForm}) => {
         <div className={css.modal}>
 
             <form className={css.content} onSubmit={handleSubmit(update)}>
-                <div><label>Name: <input type="text"{...register("name")}/></label></div>
-                <div><label>Image URL: <input type="text"{...register("imageUrl")}/></label></div>
-                <div><label>Quantity: <input type="text"{...register("count", {valueAsNumber: true})}/></label></div>
-                <div><label>Width: <input type="text"{...register("size.width", {valueAsNumber: true})}/></label></div>
-                <div><label>Height: <input type="text"{...register("size.height", {valueAsNumber: true})}/></label>
+                <div><label>Name: <input type="text"{...register("name", {required: true})}/></label></div>
+                <div><label>Image URL: <input type="text"{...register("imageUrl", {required: true})}/></label></div>
+                <div><label>Quantity: <input type="text"{...register("count", {valueAsNumber: true, required: true})}/></label>
                 </div>
-                <div><label>Weight: <input type="text"{...register("weight")}/></label>
+                <div><label>Width: <input type="text"{...register("size.width", {
+                    valueAsNumber: true,
+                    required: true
+                })}/></label></div>
+                <div><label>Height: <input type="text"{...register("size.height", {
+                    valueAsNumber: true,
+                    required: true
+                })}/></label>
+                </div>
+                <div><label>Weight: <input type="text"{...register("weight", {required: true})}/></label>
                 </div>
                 <div className={css.confirm}>
                     <button>Edit</button>
