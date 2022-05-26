@@ -1,23 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 
 import {ProductDetails} from "../../components";
-import {productService} from "../../services";
+import {useSelector} from "react-redux";
 
 
 const ProductIdPage = () => {
     const [product, setProduct] = useState(null);
-    const {state} = useLocation();
     const {productId} = useParams()
+    const {products} = useSelector(state => state.products)
 
     useEffect(() => {
-        if (state) {
-            setProduct(state)
-        } else {
-            productService.getById(productId).then(({data}) => setProduct(data))
-        }
-    }, [])
+        const filter = products.filter((product) => product.id == productId)
+        setProduct(filter[0])
+    }, [products])
 
     return (
         <div>

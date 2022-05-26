@@ -9,12 +9,13 @@ import css from "./ProductDetails.module.css"
 import {ModalForDeleting} from "../ModalForDeleting/ModalForDeleting";
 import {EditForm} from "../EditForm/EditForm";
 
-const ProductDetails = ({product, product: {id, name, imageUrl, count, size, weight}}) => {
+
+const ProductDetails = ({product}) => {
     const dispatch = useDispatch();
+    const {name, imageUrl, count, size, weight} = product;
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const [openEditForm, setOpenEditForm] = useState(false);
     const {width, height} = size;
-
 
     return (
         <div className={css.main}>

@@ -21,8 +21,6 @@ const createProd = createAsyncThunk(
 
         const {data} = await productService.create(product)
         dispatch(create({product: data}))
-
-
     }
 )
 
@@ -44,30 +42,20 @@ const updateById = createAsyncThunk(
 )
 
 const getAllSortedByQuantity = createAsyncThunk(
-    "sortByQuan",
-    async ({product}, {dispatch}) => {
+    "productSlice/sortByQuan",
+    async ({}, {dispatch}) => {
         await productService.getAll();
-        dispatch(getAllSortedByCount({product}))
+        dispatch(getAllSortedByCount({}))
 
     }
 )
 
 const getAllSortedByName = createAsyncThunk(
-    "sortByName",
-    async ({product}, {dispatch}) => {
-        await productService.getAll()
-        dispatch(getAllSortedByAlphabet(product))
+    "productSlice/sortByName",
+    async ({}, {dispatch}) => {
+        dispatch(getAllSortedByAlphabet())
     }
 )
-
-const getById = createAsyncThunk(
-    "getById",
-    async ({id}, {dispatch}) => {
-        await productService.getById(id)
-        dispatch(getOneProductById(id))
-    }
-)
-
 
 const productSLice = createSlice({
     name: "productSlice",
@@ -75,8 +63,8 @@ const productSLice = createSlice({
     reducers: {
         create: (state, action) => {
             state.products.push(action.payload.product)
-        }
-        , deleteProductById: (state, action) => {
+        },
+        deleteProductById: (state, action) => {
             const index = state.products.findIndex(product => product.id === action.payload.id)
             state.products.splice(index, 1)
         },
@@ -88,14 +76,10 @@ const productSLice = createSlice({
             state.productForUpdate = action.payload.product
         },
         getAllSortedByCount: (state, action) => {
-            state.product = action.payload.sort((a, b) => a.count - b.count)
+            state.products = state.products.sort((a, b) => a.count - b.count)
         },
         getAllSortedByAlphabet: (state, action) => {
-            state.product = action.payload.sort((a, b) => a.name.localeCompare(b.name))
-        },
-        getOneProductById: (state, action) => {
-            const id = state.products.findIndex((product => product.id === action.payload.id))
-
+            state.products = state.products.sort((a, b) => a.name.localeCompare(b.name))
         }
 
     },
@@ -103,8 +87,7 @@ const productSLice = createSlice({
         [getAll.fulfilled]: (state, action) => {
             state.products = action.payload
         },
-        [createProd.fulfilled]: (state, action) => {
-        }
+        [createProd.fulfilled]: (state, action) => {}
     }
 
 });
@@ -117,7 +100,6 @@ const {
         updateProductById,
         setProductForUpdate,
         getAllSortedByAlphabet,
-        getOneProductById,
         getAllSortedByCount
     }
 } = productSLice
@@ -125,7 +107,6 @@ const {
 const productsActions = {
     getAll,
     deleteById,
-    getById,
     updateById,
     createProd,
     getAllSortedByQuantity,

@@ -1,40 +1,48 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import React, {useEffect, useState} from 'react';
+import {useSelector} from "react-redux";
 
 import css from "./Products.module.css"
-import {productsActions} from "../../redux";
 import {Product} from "../Product/Product";
 
 const Products = () => {
     const {products} = useSelector(state => state.products)
-    const dispatch = useDispatch();
+    const [data, setData] = useState([]);
+    const [sortType, setSortType] = useState('name');
 
-
-    const sorter = () => {
-        dispatch(productsActions.getAllSortedByName())
-    }
-    const sorter2 = () => {
-        dispatch(productsActions.getAllSortedByQuantity())
-    }
 
     useEffect(() => {
-        dispatch(productsActions.getAll())
-    }, [])
+        const sortArray = type => {
+            const types = {
+                name: 'name',
+                count: 'count'
+            };
+            const sortProperty = types[type];
+            let sorted = []
+            if (sortProperty === 'name') {
+                sorted = [...products].sort((a, b) => a[sortProperty].localeCompare(b[sortProperty]));
+            } else {
+                sorted = [...products].sort((a, b) => b[sortProperty] - a[sortProperty]);
+            }
+
+            setData(sorted);
+        };
+
+        sortArray(sortType);
+    }, [sortType]);
 
     return (
 
         <div>
             <div className={css.main_wrap}>
-                {products.map(product => <Product key={product.id} product={product}/>)}
+                {data.map(product => <Product key={product.id} product={product}/>)}
 
             </div>
             <div className={css.navbar}>
                 <div className={css.dropdown}>
-                    <button className={css.dropbtn}>Sorting</button>
-                    <div className={css.dropdown_content}>
-                        <a href="#" onClick={() => sorter()}>Alphabet</a>
-                        <a href="#" onClick={() => sorter2()}>Quantity</a>
-                    </div>
+                    <select onChange={(e) => setSortType(e.target.value)}>
+                        <option value="name">Alphabet</option>
+                        <option value="count">Quantity</option>
+                    </select>
                 </div>
             </div>
         </div>
