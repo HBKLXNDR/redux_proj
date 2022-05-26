@@ -37,25 +37,9 @@ const updateById = createAsyncThunk(
     async ({id, product}, {dispatch, rejectWithValue}) => {
         await productService.updateById(id, product);
         dispatch(updateProductById({id, product}))
-
     }
 )
 
-const getAllSortedByQuantity = createAsyncThunk(
-    "productSlice/sortByQuan",
-    async ({}, {dispatch}) => {
-        await productService.getAll();
-        dispatch(getAllSortedByCount({}))
-
-    }
-)
-
-const getAllSortedByName = createAsyncThunk(
-    "productSlice/sortByName",
-    async ({}, {dispatch}) => {
-        dispatch(getAllSortedByAlphabet())
-    }
-)
 
 const productSLice = createSlice({
     name: "productSlice",
@@ -74,12 +58,6 @@ const productSLice = createSlice({
         },
         setProductForUpdate: (state, action) => {
             state.productForUpdate = action.payload.product
-        },
-        getAllSortedByCount: (state, action) => {
-            state.products = state.products.sort((a, b) => a.count - b.count)
-        },
-        getAllSortedByAlphabet: (state, action) => {
-            state.products = state.products.sort((a, b) => a.name.localeCompare(b.name))
         }
 
     },
@@ -87,7 +65,8 @@ const productSLice = createSlice({
         [getAll.fulfilled]: (state, action) => {
             state.products = action.payload
         },
-        [createProd.fulfilled]: (state, action) => {}
+        [createProd.fulfilled]: (state, action) => {
+        }
     }
 
 });
@@ -99,8 +78,6 @@ const {
         deleteProductById,
         updateProductById,
         setProductForUpdate,
-        getAllSortedByAlphabet,
-        getAllSortedByCount
     }
 } = productSLice
 
@@ -109,11 +86,7 @@ const productsActions = {
     deleteById,
     updateById,
     createProd,
-    getAllSortedByQuantity,
-    getAllSortedByName,
     setProductForUpdate
-
-
 }
 
 export {

@@ -28,7 +28,7 @@ const Products = () => {
         };
 
         sortArray(sortType);
-    }, [sortType]);
+    }, [products, sortType]);
 
     return (
 
